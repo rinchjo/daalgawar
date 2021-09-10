@@ -1,0 +1,47 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css" />
+  <link rel="stylesheet" href="table.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <h1>Сурагчдийн жагсаалт</h1>
+    <table class="table">
+      <tr>
+        <th scope="col">Сурагчийн нэр</td>
+        <th scope="col">Сурагчийн хүйс</td>
+        <th scope="col">Сурагчийн дугаар</td>
+      </tr>
+      <tbody id="tableBody">
+      </tbody>
+    </table>
+  </div>
+  <a class="btn" href="/daalgawar.html">Home</a>
+</body>
+<script>
+  let suragchid = [
+    "Будхүү", "Бат-өлзий", "mango", "Эрдэнэдалай", "Ринчинням", "Түшиг", "BOB"
+  ]
+  //1.Амьтдийн жагсаалт харуулах table javascript ашиглана
+  //2.css table nemelt helberjuulelt->{row ochhod baganii elementuud tsagaan texteer haragdah,cursor ochhod bas gar irjdeg(pointer)}
+  tableDataInsert(suragchid);
+  function tableDataInsert(suragchidiinNer) {
+    const tableBody = document.getElementById("tableBody");
+    let tableRows = "";//mur bolgonii texttiig hadgaldag
+    for (let i = 0; i < suragchidiinNer.length; i++) {
+      tableRows = tableRows +
+        "<tr><td>" + suragchidiinNer[i] + "</td><td>Эрэгтэй</td><td>" + Number(i + 19) + "</td></tr>"
+    }
+    console.log(tableRows);
+    tableBody.innerHTML = tableRows;
+  }
+
+</script>
+
+</html>

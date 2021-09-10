@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css" />
+    <link rel="stylesheet" href="table.css">
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <table class="table">
+            <h1>Амьтадын жагсаалт</h1>
+            <tr>
+                <th scope="col">Нэршил</td>
+                <th scope="col">ХӨГЖЛИЙН ИНДЕКС</td>
+                <th scope="col">Тоо</td>
+            </tr>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+    </div>
+    <a class="btn" href="/daalgawar.html">Home</a>
+    <script>
+        let animal = [
+            "Үхэр", "хонь", "морь", "Ямаа", "Тэмээ"
+        ]
+        //1.Амьтдийн жагсаалт харуулах table javascript ашиглана
+        //2.css table nemelt helberjuulelt->{row ochhod baganii elementuud tsagaan texteer haragdah,cursor ochhod bas gar irjdeg(pointer)}
+        tableDataInsert(animal);
+        function tableDataInsert(animalName) {
+            const tableBody = document.getElementById("tableBody");
+            let tableRows = "";//mur bolgonii texttiig hadgaldag
+            for (let i = 0; i < animalName.length; i++) {
+                tableRows = tableRows +
+                    "<tr><td>" + animalName[i] + "</td><td>" + Number(i + 36.3)+"%" + "</td><td>" + Number(i + 76) + "</td></tr>"
+            }
+            console.log(tableRows);
+            tableBody.innerHTML = tableRows;
+        }
+
+    </script>
+</body>
+
+</html>

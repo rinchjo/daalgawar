@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жагсаалт</title>
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css" />
+    <link rel="stylesheet" href="table.css">
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <h1> Мал, aмьтадын жагсаалт</h1>
+        <input type="text" id="name" placeholder="Нэршил Оруулах">
+        <input type="text" id="number" placeholder="Тоо Толгой">
+        <input type="text" id="growth" placeholder="Өсөлтийн Индекс">
+        <input type="text" id="location" placeholder="Байршил Оруулах ">
+        <button type="button" class="btn btn-primary" onclick="addAnimal()">Шинэ мэдээлэл оруулах</button>
+        <table class="table">
+            <tr>
+                <th scope="col">Нэршил</td>
+                <th scope="col">Өcөлтийн индекс</td>
+                <th scope="col">Тоо</td>
+                <th scope="col">Байршил </td>
+
+            </tr>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+    </div>
+    <a class="btn" href="/daalgawar.html">Home</a>
+    <script>
+        let animal = [{
+            name: "Үхэр",
+            numbers: "130",
+            growth: "36%",
+            country: "Монгол Улс",
+            information: function () {
+                return (
+                    this.country
+                );
+            },
+        },
+        {
+            name: "Хонь",
+            numbers: "12130",
+            growth: "106%",
+            country: "Монгол Улс",
+            information: function () {
+                return (
+                    this.country
+                );
+            },
+        },
+        {
+            name: "Ямаа",
+            numbers: "230",
+            growth: "51%",
+            country: "Монгол Улс",
+            information: function () {
+                return (
+                    this.country
+                );
+            },
+        },
+
+
+        {
+            name: "Морь",
+            numbers: "530",
+            growth: "56%",
+            country: "Монгол Улс",
+            information: function () {
+                return (
+                    this.country
+                );
+            },
+        },
+        {
+            name: "Тэмээ",
+            numbers: "80",
+            growth: "45%",
+            country: "Монгол Улс",
+            information: function () {
+                return (
+                    this.country
+                );
+            },
+        }];
+
+        function addAnimal() {
+            let inputName = document.getElementById("name").value;
+            let inputNumber = document.getElementById("number").value;
+            let inputGrowth = document.getElementById("growth").value;
+            let inputLocation = document.getElementById("location").value;
+            if (
+                inputName != "" &&
+                inputNumber != "" &&
+                inputGrowth != "" &&
+                inputLocation != ""
+            ) {
+                let amitad = {
+                    name: inputName,
+                    numbers: inputNumber,
+                    growth: inputGrowth,
+                    country: inputLocation,
+                    information: function () {
+                        return (
+                            this.country
+                        );
+                    },
+                };
+
+                animal.push(amitad);
+                document.getElementById("name").value = "";
+                document.getElementById("number").value = "";
+                document.getElementById("growth").value = "";
+                document.getElementById("location").value = "";
+                tableDataInsert();
+            }
+            else {
+                alert("Утга хоосон байна")
+            }
+
+        }
+        tableDataInsert(animal);
+        function tableDataInsert(animalName) {
+            const tableBody = document.getElementById("tableBody");
+            let tableRows = "";
+            for (let i = 0; i < animal.length; i++) {
+                tableRows = tableRows +
+                    "<tr><td>" + animal[i].name + "</td><td>" + animal[i].growth + "</td><td>" + animal[i].numbers + "</td><td>" + animal[i].information() + "</td><td><button onclick=removeAnimal(" +
+                    i +
+                    ") class='btn btn-outline-danger'>Устгах</button</td></tr>";
+            }
+            console.log(tableRows);
+            tableBody.innerHTML = tableRows;
+        }
+        function removeAnimal(index) {
+            animal.splice(index, 1);
+            tableDataInsert();
+        }
+    </script>
+</body>
+
+</html>
